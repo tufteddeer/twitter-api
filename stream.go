@@ -160,7 +160,10 @@ func (tw *Client) stream() {
 				errChan <- err
 			}
 			tweet := convertToTweet(result.Tweet, result.Includes, &result.Matches)
-			tw.StreamedTweets <- tweet
+
+			if tw.EnableAllTweetsChannel {
+				tw.StreamedTweets <- tweet
+			}
 			tweetChan <- tweet
 		}
 		close(tweetChan)

@@ -57,12 +57,13 @@ type Tweet struct {
 
 // Client provides access to (some) twitter api endpoints
 type Client struct {
-	Token             string
-	streamSubscribers []StreamSubscription
-	streaming         bool
-	stopStreamChan    chan bool
-	StreamedTweets    chan Tweet // every Tweet received from the streaming endpoint, regardless of matching rules
-	logger            *log.Logger
+	Token                  string
+	streamSubscribers      []StreamSubscription
+	streaming              bool
+	stopStreamChan         chan bool
+	StreamedTweets         chan Tweet // every Tweet received from the streaming endpoint, regardless of matching rules
+	EnableAllTweetsChannel bool
+	logger                 *log.Logger
 	sync.Mutex
 }
 
