@@ -13,17 +13,17 @@ import (
 
 // streamResponse represents the data returned by twitters stream api
 type streamResponse struct {
-	Tweet    tweet           `json:"data"`
-	Includes includes        `json:"includes"`
-	Matches  []streamRuleInt `json:"matching_rules"`
+	Tweet    tweet        `json:"data"`
+	Includes includes     `json:"includes"`
+	Matches  []StreamRule `json:"matching_rules"`
 }
 
 // for some reason, the rule ID used by Twitter is sometimes a string and sometimes an int ¯\_(ツ)_/¯
 
-type streamRuleInt struct {
+/*type streamRuleInt struct {
 	ID   int    `json:",omitempty"`
 	Rule string `json:"value"`
-}
+}*/
 
 // streamRuleResponse represents the response of twitters /2/tweets/search/stream/rules endpoint
 type streamRuleResponse struct {

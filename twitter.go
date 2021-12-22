@@ -18,7 +18,6 @@ import (
 	"net/http"
 	"net/url"
 	"os"
-	"strconv"
 	"strings"
 	"sync"
 )
@@ -210,7 +209,7 @@ func tweetsFromSearchResult(response searchResponse) []Tweet {
 
 // convertToTweet merges twitters tweet and includes metadata
 // into a Tweet object
-func convertToTweet(tweet tweet, incl includes, matches *[]streamRuleInt) Tweet {
+func convertToTweet(tweet tweet, incl includes, matches *[]StreamRule) Tweet {
 	var author Author
 
 	for _, user := range incl.Users {
@@ -255,7 +254,7 @@ func convertToTweet(tweet tweet, incl includes, matches *[]streamRuleInt) Tweet 
 	if matches != nil {
 		rules = make([]string, len(*matches))
 		for i, rule := range *matches {
-			rules[i] = strconv.Itoa(rule.ID)
+			rules[i] = rule.ID
 		}
 	}
 	return Tweet{
